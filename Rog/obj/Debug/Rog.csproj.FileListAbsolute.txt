@@ -1,0 +1,8 @@
+c:\users\tristan\documents\visual studio 2015\Projects\Rog\Rog\bin\Debug\Rog.exe.config
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.csprojResolveAssemblyReference.cache
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.Properties.Resources.resources
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.csproj.GenerateResource.Cache
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\bin\Debug\Rog.exe
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\bin\Debug\Rog.pdb
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.exe
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.pdb

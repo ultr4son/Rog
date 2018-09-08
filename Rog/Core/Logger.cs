@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    interface IGameEngine
+    public interface ILogger
     {
-        void start();
-        void stop();
+        void log(string message);
+        IEnumerable<string> getLog();
     }
 }

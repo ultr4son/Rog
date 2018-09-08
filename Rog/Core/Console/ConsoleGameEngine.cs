@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    public class ConsoleGameEngine : IGameEngine
+    public class ConsoleInputEngine : IInputEngine
     {
-        public ConsoleGameEngine(RogGame game, ProgramState state)
+        public ConsoleInputEngine()
         {
-            this.game = game;
-            this.state = state;
-           
         }
-        private ProgramState state;
-        private RogGame game;
+        public event EventHandler<Command> OnInput;
         public void start()
         {
             while (true)
@@ -43,8 +39,7 @@ namespace Rog.Core
                     default:
                         continue;
                 }
-                game.sendCommand(command, state);
-                
+                OnInput(this, command);
                 
             }
         }
@@ -53,5 +48,6 @@ namespace Rog.Core
         {
             throw new NotImplementedException();
         }
+
     }
 }

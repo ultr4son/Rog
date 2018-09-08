@@ -15,15 +15,15 @@ namespace Rog.Core
         public static StateEngineState<Command, StateMutation<ProgramState>> Init = (Command command, ProgramState state) =>
         {
             state.game.floor = MapGenerator.basicFloor(Tuple.Create(10, 10));
-            state.game.player = CharacterGenerator.makeCharacter(10, "Bep", CharacterType.PLAYER, Team.PLAYER_FRIENDLY,Tuple.Create(5, 5));
+            state.game.player = Make.character(10, "Bep", CharacterType.PLAYER, Team.PLAYER_FRIENDLY,Tuple.Create(5, 5));
 
-            Character dummy = CharacterGenerator.makeDummy(10, Tuple.Create(4,4));
-            Character bat = CharacterGenerator.makeBat(10, Tuple.Create(2, 4));
+            Character dummy = Make.dummy(10, Tuple.Create(4,4));
+            Character bat = Make.bat(10, Tuple.Create(2, 4));
 
             state.game.turns = new List<CommandStateMutation>()
             {
-                CharacterGenerator.bindPlayer(state.game.player),
-                CharacterGenerator.bindBat(bat)
+                Turn.player(state.game.player),
+                Turn.bat(bat)
             };
             state.game.floor.characters.Add(state.game.player);
             state.game.floor.characters.Add(dummy);

@@ -8,9 +8,9 @@ namespace Rog.Core
 {
     public class RogGame
     {
-        public RogGame(StateMachine<Command> gameMachine)
+        public RogGame(StateEngineState<Command, StateMutation<ProgramState>> initialState)
         {
-            this.gameMachine = gameMachine;
+            this.gameMachine = new StateMachine<Command>(initialState);
         }
         StateMachine<Command> gameMachine;
         

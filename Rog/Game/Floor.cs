@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rog
+namespace Rog.Game
 {
     public class Floor
     {
@@ -13,6 +13,7 @@ namespace Rog
             characters = new List<Character>();
             walls = new List<Character>();
             dead = new List<Character>();
+            items = new List<Item>();
             this.size = size;
         }
         public IEnumerable<Character> obstacles()
@@ -23,9 +24,11 @@ namespace Rog
         {
             return characters.Concat(walls).Concat(dead);
         }
+
         public List<Character> characters;
         public List<Character> walls;
         public List<Character> dead;
+        public List<Item> items;
         public Tuple<int, int> size;
     }
 }

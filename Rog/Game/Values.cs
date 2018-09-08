@@ -24,7 +24,8 @@ namespace Rog
         PLAYER,
         BAT,
         WALL,
-        DUMMY
+        DUMMY,
+        SWORD
     }
 
     public enum Team

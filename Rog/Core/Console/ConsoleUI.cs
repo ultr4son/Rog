@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rog.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    class ConsoleUI : IUserInterface
+    public class ConsoleUI : IUserInterface
     {
-        public void showMessage(string message)
-        {
-            Console.WriteLine(message);
-        }
+        
         private string toChar(CharacterType type)
         {
             switch (type)
@@ -28,9 +26,10 @@ namespace Rog.Core
                     return "c";
             }   
         }
-        private void drawFloor(Floor floor)
+        public void notify(ProgramState state)
         {
             StringBuilder b = new StringBuilder();
+            Floor floor = state.game.floor;
             List<Character> all = floor.obstacles().ToList();
             for(int y = floor.size.Item2; y >= 0; y--)
             {
@@ -51,10 +50,5 @@ namespace Rog.Core
            Console.Write(b.ToString());
         }
 
-        
-        public void renderMap(Floor state)
-        {
-            drawFloor(state);
-        }
     }
 }

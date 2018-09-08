@@ -10,12 +10,12 @@ namespace Rog.Core
    
     public class ProgramState
     {
-        public ProgramState(IUserInterface ui, GameState game)
+        public ProgramState(ILogger logger, GameState game)
         {
-            this.ui = ui;
+            this.logger = logger;
             this.game = game;
         } 
-        public IUserInterface ui { get; private set; }
+        public ILogger logger { get; private set; }
         public GameState game { get; private set; } 
     }
 }

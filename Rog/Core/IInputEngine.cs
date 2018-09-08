@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Rog.Game;
 
 namespace Rog.Core
 {
-
-    public interface IUserInterface
+    interface IInputEngine
     {
-        void notify(ProgramState state);
+        event EventHandler<Command> OnInput;
+        void start();
+        void stop();
     }
 }

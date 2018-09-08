@@ -6,3 +6,6 @@ C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\bin\Debug\Rog.exe
 C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\bin\Debug\Rog.pdb
 C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.exe
 C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.pdb
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.Core.Forms.Inventory.resources
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.Core.Forms.Log.resources
+C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.Core.Console.Form1.resources

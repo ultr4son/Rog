@@ -5,16 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rog
+namespace Rog.Game
 {
     static class GameUtil
     {
-        public class MoveResult
-        {
-            public Tuple<int, int> newPos;
-            public bool moved;
-            public int? damageDone;
-        }
         public static readonly Random random = new Random();
         public static bool occupied(Tuple<int,int> pos, IEnumerable<Character> entities)
         {
@@ -26,15 +20,6 @@ namespace Rog
             pos.Item1 > 0 && pos.Item1 < xSize && 
             pos.Item2 < 0 && pos.Item2 > ySize;
         }
-        public static StateMutation<ProgramState> withRender(StateMutation<ProgramState> f)
-        {
-            return (state) =>
-            {
-                var mut = f(state);
-                state.ui.renderMap(mut.game.floor);
-                return mut;
-            };
-        }
         public static T pickOne<T>(params T[] items)
         {
             int i = random.Next(0, items.Count());
@@ -45,55 +30,10 @@ namespace Rog
             return floor.all().First(c => c.position.Item1 == pos.Item1 && c.position.Item2 == pos.Item2);
         }
          
-        public delegate ProgramState MoveHandler(MoveResult move, ProgramState state);
-        public static MoveHandler withReporting(Character reportee, StateMutation<ProgramState> f)
+        public static void doPickup(Character character, Item item, List<Item> items)
         {
-            return (result, state) =>
-            {
-                if (!result.moved)
-                {
-                    Character hit = characterAt(result.newPos, state.game.floor);
-                    if (result.damageDone != null)
-                    {
-                        state.ui.showMessage($"{reportee.name} hit {hit.name} for {result.damageDone}!");
-                    }
-                    else
-                    {
-                        state.ui.showMessage($"{reportee.name} ran into {hit.name}");
-                    }
-                }
-                return f(state);
-            };
-        }
-        public static StateMutation<ProgramState> withMoveAndInteract(Character character, Command movement, MoveHandler f)
-        {
-            return (state) => 
-            {
-                Tuple<Tuple<int, int>, bool> newPos = GameUtil.move(state.game.floor.obstacles(), character.position, movement, state.game.floor.size);
-                int? damageDone = null;
-                Character attackee = null;
-                if (newPos.Item2)
-                {
-                    character.position = newPos.Item1;
-                }
-                else
-                {
-                    Character hit = state.game.floor.obstacles().First(c => c.position.Item1 == newPos.Item1.Item1 && c.position.Item2 == newPos.Item1.Item2);
-                    if(hit.team != Team.NEUTRAL && hit.team != character.team)
-                    {
-                        damageDone = doAttack(character, hit, state.game.floor);
-                        attackee = hit;
-                    }
-                }
-                return f(new MoveResult()
-                {
-                    damageDone = damageDone,
-                    moved = newPos.Item2,
-                    newPos = newPos.Item1 
-                }
-                , state);
-                
-            };
+            character.inventory.Add(item);
+            items.Remove(item);
         }
         public static int doAttack(Character attacker, Character attackee, Floor floor)
         {

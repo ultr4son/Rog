@@ -8,7 +8,7 @@ namespace Rog.Game
 {
     public class Floor
     {
-        public Floor(Tuple<int, int> size)
+        public Floor((int, int) size)
         {
             characters = new List<Character>();
             walls = new List<Character>();
@@ -29,6 +29,6 @@ namespace Rog.Game
         public List<Character> walls;
         public List<Character> dead;
         public List<Item> items;
-        public Tuple<int, int> size;
+        public (int width, int height) size;
     }
 }

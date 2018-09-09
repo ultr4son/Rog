@@ -19,7 +19,7 @@ namespace Rog.Game
                 Item item = state.game.floor.items.FirstOrDefault(i => i.position.Item1 == character.position.Item1 && i.position.Item2 == character.position.Item2);
                 if (item != null)
                 {
-                    state.logger.log($"{character.name} picked up {item.name}");
+                    state.log.Add($"{character.name} picked up {item.name}");
                     GameUtil.doPickup(character, item, state.game.floor.items);
                 }
                 return f(state);
@@ -40,7 +40,7 @@ namespace Rog.Game
                     if (hit.team != Team.NEUTRAL && hit.team != character.team)
                     {
                         int damageDone = GameUtil.doAttack(character, hit, state.game.floor);
-                        state.logger.log($"{character.name} hit {hit.name} for {damageDone}");
+                        state.log.Add($"{character.name} hit {hit.name} for {damageDone}");
 
                     }
                 }

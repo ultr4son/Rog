@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    public class StateMachine<TSignal>
+
+    public class StateMachine<TSignal, TOut> : IMutator<TSignal, TOut>
     {
-        public StateMachine(StateEngineState<TSignal, StateMutation<ProgramState>> initialState)
+        public StateMachine(StateMachineState<TSignal, TOut> initialState)
         {
             state = initialState;
         }
-        private StateEngineState<TSignal, StateMutation<ProgramState>> state;
+        private StateMachineState<TSignal, TOut> state;
 
-        public IEnumerable<StateMutation<ProgramState>> apply(TSignal command, ProgramState gameState)
+        public event EventHandler<TOut> OnState;
+
+        public void notify(TSignal input)
         {
-            var result = state(command, gameState);
-            state = result.Item1;
-            return result.Item2;
+            var result = state(input);
+            state = result.next;
+            OnState(this, result.output);
         }
     }
 }

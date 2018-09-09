@@ -10,7 +10,7 @@ namespace Rog.Game
     public class MapGenerator
     {
        
-        public static Floor basicFloor(Tuple<int, int> size)
+        public static Floor basicFloor((int,int) size)
         {
             Floor floor = new Floor(size);
             List<Character> walls = new List<Character>();
@@ -20,7 +20,7 @@ namespace Rog.Game
                 {
                     if(x == 0 || y == 0 || x == size.Item1 - 1 || y == size.Item2 - 1)
                     {
-                        walls.Add(Make.wall(10, Tuple.Create(x, y)));
+                        walls.Add(Make.wall(10, (x, y)));
                     }
                 }
             }

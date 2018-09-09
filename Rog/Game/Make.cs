@@ -8,7 +8,7 @@ namespace Rog.Game
 {
     public static class Make
     {
-        public static Character character(int hp, string name, CharacterType characterType, Team team, Tuple<int, int> position)
+        public static Character character(int hp, string name, CharacterType characterType, Team team, (int,int) position)
         {
             return new Character()
             {
@@ -19,7 +19,7 @@ namespace Rog.Game
                 team = team
             };
         }
-        public static Character player(int hp, string name, Tuple<int, int> position)
+        public static Character player(int hp, string name, (int,int) position)
         {
             return new Character()
             {
@@ -31,7 +31,7 @@ namespace Rog.Game
                 team = Team.PLAYER_FRIENDLY
             };
         }
-        public static Character bat(int hp, Tuple<int, int> position)
+        public static Character bat(int hp, (int,int) position)
         {
             return new Character()
             {
@@ -45,7 +45,7 @@ namespace Rog.Game
 
             };
         }
-        public static Character dummy(int hp, Tuple<int, int> position)
+        public static Character dummy(int hp, (int,int) position)
         {
             return new Character()
             {
@@ -60,7 +60,7 @@ namespace Rog.Game
             };
         }
 
-        public static Character wall(int hp, Tuple<int, int> position)
+        public static Character wall(int hp, (int,int) position)
         {
             return new Character()
             {

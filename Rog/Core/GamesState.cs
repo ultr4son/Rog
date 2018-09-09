@@ -12,7 +12,7 @@ namespace Rog.Core
         public GameState()
         {
             player = null;
-            floor = new Floor(Tuple.Create(0, 0));
+            floor = new Floor((0, 0));
             turns = new List<CommandStateMutation>();
         }
         public Character player

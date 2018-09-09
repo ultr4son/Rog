@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Rog.Core.Forms
 {
-    class FormsInput : IInputEngine
+    class FormsInput : IInput
     {
         public FormsInput(Form mainWindow)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    public class ConsoleInputEngine : IInputEngine
+    public class ConsoleInputEngine : IInput
     {
         public ConsoleInputEngine()
         {
@@ -16,7 +17,7 @@ namespace Rog.Core
         {
             while (true)
             {
-                ConsoleKeyInfo key = Console.ReadKey();
+                ConsoleKeyInfo key = System.Console.ReadKey();
                 Command command;
                 switch (key.Key)
                 {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    interface IInputEngine
+    interface IInput
     {
         event EventHandler<Command> OnInput;
         void start();

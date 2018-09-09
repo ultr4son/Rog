@@ -16,6 +16,7 @@ namespace Rog
         MOVE_UPLEFT,
         MOVE_DOWNRIGHT,
         MOVE_DOWNLEFT,
+        ENTER,
         NONE       
     }
 

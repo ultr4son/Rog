@@ -17,7 +17,7 @@ namespace Rog.Game
         public string name;
         public int hp;
 
-        public Tuple<int, int> position;
+        public (int x, int y) position;
 
         public CharacterType characterType;
         public Team team;

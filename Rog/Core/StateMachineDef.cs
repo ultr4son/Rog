@@ -8,17 +8,18 @@ using System.Threading.Tasks;
 namespace Rog.Core
 {
 
-    public delegate Tuple<StateEngineState<TSignal, TMut>, IEnumerable<TMut>> StateEngineState<TSignal, TMut>(TSignal command, ProgramState state);
-    
+    public delegate (StateMachineState<TSignal,TOut> next, TOut output) StateMachineState<TSignal, TOut>(TSignal command);
+    public delegate StateMachineState<TSignal, TOut> BoundStateMachineState<TSignal, TOut, TBind>(TBind bind);
     public static class States
     {
-        public static StateEngineState<Command, StateMutation<ProgramState>> Init = (Command command, ProgramState state) =>
+        public static BoundStateMachineState<Command, ProgramState, ProgramState> Init = (state) => (command) =>
         {
-            state.game.floor = MapGenerator.basicFloor(Tuple.Create(10, 10));
-            state.game.player = Make.character(10, "Bep", CharacterType.PLAYER, Team.PLAYER_FRIENDLY,Tuple.Create(5, 5));
 
-            Character dummy = Make.dummy(10, Tuple.Create(4,4));
-            Character bat = Make.bat(10, Tuple.Create(2, 4));
+            state.game.floor = MapGenerator.basicFloor((10,10));
+            state.game.player = Make.character(10, "Bep", CharacterType.PLAYER, Team.PLAYER_FRIENDLY,(5,5));
+
+            Character dummy = Make.dummy(10, (4,4));
+            Character bat = Make.bat(10, (2,4));
 
             state.game.turns = new List<CommandStateMutation>()
             {
@@ -28,13 +29,13 @@ namespace Rog.Core
             state.game.floor.characters.Add(state.game.player);
             state.game.floor.characters.Add(dummy);
             state.game.floor.characters.Add(bat);
-            return Tuple.Create(Playing, new List<StateMutation<ProgramState>>().AsEnumerable());
+            return (Playing(state), state);
         };
 
         //TODO: Put in state transitions when doing inventory, etc.
-        public static StateEngineState<Command, StateMutation<ProgramState>> Playing = (Command command, ProgramState state) =>
+        public static BoundStateMachineState<Command, ProgramState, ProgramState> Playing = (state) => (command) =>
         {
-            return Tuple.Create(Playing, state.game.turns.Select(f => f(command)));
+            return (Playing(state), state.game.turns.Select(f => f(command)).Aggregate(state, (s, f) => f(s)));
         };
     }
 }

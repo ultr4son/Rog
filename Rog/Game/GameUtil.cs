@@ -10,15 +10,15 @@ namespace Rog.Game
     static class GameUtil
     {
         public static readonly Random random = new Random();
-        public static bool occupied(Tuple<int,int> pos, IEnumerable<Character> entities)
+        public static bool occupied((int x, int y) pos, IEnumerable<Character> entities)
         {
-            return entities.ToList().Exists(e => e.position.Item1 == pos.Item1 && e.position.Item2 == pos.Item2);
+            return entities.ToList().Exists(e => e.position.x == pos.x && e.position.y == pos.y);
         }
-        public static bool outOfBounds(Tuple<int, int> pos, int xSize, int ySize)
+        public static bool outOfBounds((int x, int y) pos, int xSize, int ySize)
         {
             return 
-            pos.Item1 > 0 && pos.Item1 < xSize && 
-            pos.Item2 < 0 && pos.Item2 > ySize;
+            pos.x > 0 && pos.x < xSize && 
+            pos.y < 0 && pos.y > ySize;
         }
         public static T pickOne<T>(params T[] items)
         {
@@ -49,34 +49,34 @@ namespace Rog.Game
             return 1;
         }
 
-        public static Tuple<Tuple<int, int>, bool> move(IEnumerable<Character> wallsAndCharacters, Tuple<int, int> pos, Command dir, Tuple<int,int> bounds)
+        public static ((int x, int y) newPos, bool moved) move(IEnumerable<Character> wallsAndCharacters, (int x, int y) pos, Command dir, (int width, int height) bounds)
         {
-            Tuple<int, int> newPos;
+            (int x, int y) newPos;
             switch (dir)
             {
                 case Command.MOVE_UP:
-                    newPos = Tuple.Create(pos.Item1, pos.Item2 + 1);
+                    newPos = (pos.x, pos.y + 1);
                     break;
                 case Command.MOVE_DOWN:
-                    newPos = Tuple.Create(pos.Item1, pos.Item2 - 1);
+                    newPos = (pos.x, pos.y - 1);
                     break;
                 case Command.MOVE_LEFT:
-                    newPos = Tuple.Create(pos.Item1 - 1, pos.Item2);
+                    newPos = (pos.x - 1, pos.y);
                     break;
                 case Command.MOVE_RIGHT:
-                    newPos = Tuple.Create(pos.Item1 + 1, pos.Item2);
+                    newPos = (pos.x + 1, pos.y);
                     break;
                 case Command.MOVE_UPRIGHT:
-                    newPos = Tuple.Create(pos.Item1 + 1, pos.Item1 + 1);
+                    newPos = (pos.x + 1, pos.y + 1);
                     break;
                 case Command.MOVE_UPLEFT:
-                    newPos = Tuple.Create(pos.Item1 - 1, pos.Item2 + 1);
+                    newPos = (pos.x - 1, pos.y + 1);
                     break;
                 case Command.MOVE_DOWNRIGHT:
-                    newPos = Tuple.Create(pos.Item1 + 1, pos.Item2 + 1);
+                    newPos = (pos.x + 1, pos.y + 1);
                     break;
                 case Command.MOVE_DOWNLEFT:
-                    newPos = Tuple.Create(pos.Item1 - 1, pos.Item2 - 1);
+                    newPos = (pos.x - 1, pos.y - 1);
                     break;
                 default:
                     newPos = pos;
@@ -84,9 +84,9 @@ namespace Rog.Game
             }
             if(!occupied(newPos, wallsAndCharacters) && !outOfBounds(newPos, bounds.Item1, bounds.Item2))
             {
-                return Tuple.Create(newPos, true);
+                return (newPos, true);
             }
-            return Tuple.Create(newPos, false);
+            return (newPos, false);
 
         }
     }

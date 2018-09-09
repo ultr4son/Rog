@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rog</RootNamespace>
     <AssemblyName>Rog</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -71,9 +72,9 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\IInputEngine.cs" />
+    <Compile Include="Core\IMutator.cs" />
     <Compile Include="Core\InMemoryLogger.cs" />
     <Compile Include="Core\Logger.cs" />
-    <Compile Include="Core\StateCommunicator.cs" />
     <Compile Include="Game\Behavior.cs" />
     <Compile Include="Game\Character.cs" />
     <Compile Include="Core\ProgramState.cs" />
@@ -89,7 +90,6 @@
     <Compile Include="Game\Turn.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\RogGame.cs" />
     <Compile Include="Game\GameUtil.cs" />
     <Compile Include="Game\Values.cs" />
     <EmbeddedResource Include="Core\Forms\Inventory.resx">
@@ -109,6 +109,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

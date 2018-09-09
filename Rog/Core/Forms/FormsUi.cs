@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rog.Core.Forms
 {
-    class FormsUI : IUserInterface
+    class FormsUI : IOutput
     {
         Inventory inventoryForm;
         Log logForm;
@@ -15,7 +15,7 @@ namespace Rog.Core.Forms
 
         public void notify(ProgramState state)
         {
-            logForm.logText.Text = state.logger.getLog().Aggregate((s, l) => s += $"{l}\n");
+            logForm.logText.Text = state.log.Aggregate((s, l) => s += $"{l}\n");
         }
     }
 }

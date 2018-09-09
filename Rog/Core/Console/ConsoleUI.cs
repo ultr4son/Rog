@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    public class ConsoleUI : IUserInterface
+    public class ConsoleUI : IOutput
     {
         
         private string toChar(CharacterType type)
@@ -28,16 +28,18 @@ namespace Rog.Core
         }
         public void notify(ProgramState state)
         {
+            System.Console.Clear();
             StringBuilder b = new StringBuilder();
             Floor floor = state.game.floor;
             List<Character> all = floor.obstacles().ToList();
-            for(int y = floor.size.Item2; y >= 0; y--)
+            System.Console.WriteLine(state.log.FirstOrDefault());
+            for (int y = floor.size.height; y >= 0; y--)
             {
-                for(int x = 0; x < floor.size.Item1; x++)
+                for(int x = 0; x < floor.size.width; x++)
                 {
-                    if(all.Exists(c => c.position.Item1 == x && c.position.Item2 == y))
+                    if(all.Exists(c => c.position.x == x && c.position.y == y))
                     {
-                        Character character = all.Find(c => c.position.Item1 == x && c.position.Item2 == y);
+                        Character character = all.Find(c => c.position.x == x && c.position.y == y);
                         b.Append(toChar(character.characterType));
                     }
                     else
@@ -47,7 +49,7 @@ namespace Rog.Core
                 }
                 b.Append("\n");
            }
-           Console.Write(b.ToString());
+           System.Console.Write(b.ToString());
         }
 
     }

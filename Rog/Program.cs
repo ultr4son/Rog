@@ -14,21 +14,20 @@ namespace Rog
         /// </summary>
         static void Main()
         {
-            IUserInterface ui = new ConsoleUI();
-            ILogger logger = new InMemoryLogger();
+            ProgramState state = new ProgramState(new GameState());
+            IOutput ui = new ConsoleUI();
+            IInput input = new ConsoleInputEngine();
+            IMutator<Command, ProgramState> game = new StateMachine<Command, ProgramState>(States.Init(state));
 
-            StateEngineState<Command, StateMutation<ProgramState>> initialState = States.Init;
-            ProgramState state = new ProgramState(logger, new GameState());
-
-            RogGame game = new RogGame(initialState);
-
-            StateHandler handler = new StateHandler(game, ui, state);
-
-            IInputEngine input = new ConsoleInputEngine();
-
+            
             input.OnInput += (object _, Command command) =>
             {
-                handler.notify(command);
+                game.notify(command);
+            };
+
+            game.OnState += (object _, ProgramState newState) =>
+            {
+                ui.notify(newState);
             };
 
             input.start();

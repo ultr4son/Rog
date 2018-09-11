@@ -11,16 +11,16 @@ namespace Rog.Game
     public delegate StateMutation<ProgramState> CommandStateMutation(Command command);
     public class Character
     {
-        public Item primaryArm;
-        public List<Item> inventory = new List<Item>();
+        public Item Primary;
+        public List<Item> Inventory = new List<Item>();
 
-        public string name;
-        public int hp;
+        public string Name;
+        public int Hp;
 
-        public (int x, int y) position;
+        public (int x, int y) Position;
 
-        public CharacterType characterType;
-        public Team team;
+        public CharacterType CharacterType;
+        public Team Team;
     }
 
     

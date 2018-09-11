@@ -9,6 +9,6 @@ namespace Rog.Core
     interface IMutator<TIn,TOut>
     {
         event EventHandler<TOut> OnState;
-        void notify(TIn input);
+        void Notify(TIn input);
     }
 }

@@ -12,11 +12,11 @@ namespace Rog.Game
     {
         public Item(bool basic, string name, ItemAction act)
         {
-            this.name = name;
+            this.Name = name;
             this.basic = basic;
             this.act = act;
-            characterType = CharacterType.SWORD;
-            team = Team.NEUTRAL;           
+            CharacterType = CharacterType.SWORD;
+            Team = Team.NEUTRAL;           
         }
         public bool basic;
         public ItemAction act;
@@ -26,7 +26,7 @@ namespace Rog.Game
     {
         public static Item hand = new Item(true, "hand", (item, actor, actee, state) =>
         {
-            actee.hp -= 1;
+            actee.Hp -= 1;
         });
     }
 }

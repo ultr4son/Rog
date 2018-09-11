@@ -10,25 +10,25 @@ namespace Rog.Game
     {
         public Floor((int, int) size)
         {
-            characters = new List<Character>();
-            walls = new List<Character>();
-            dead = new List<Character>();
-            items = new List<Item>();
-            this.size = size;
+            Characters = new List<Character>();
+            Walls = new List<Character>();
+            Dead = new List<Character>();
+            Items = new List<Item>();
+            this.Size = size;
         }
-        public IEnumerable<Character> obstacles()
+        public IEnumerable<Character> Obstacles()
         {
-            return characters.Concat(walls);
+            return Characters.Concat(Walls);
         }
-        public IEnumerable<Character> all()
+        public IEnumerable<Character> All()
         {
-            return characters.Concat(walls).Concat(dead);
+            return Characters.Concat(Walls).Concat(Dead);
         }
 
-        public List<Character> characters;
-        public List<Character> walls;
-        public List<Character> dead;
-        public List<Item> items;
-        public (int width, int height) size;
+        public List<Character> Characters;
+        public List<Character> Walls;
+        public List<Character> Dead;
+        public List<Item> Items;
+        public (int width, int height) Size;
     }
 }

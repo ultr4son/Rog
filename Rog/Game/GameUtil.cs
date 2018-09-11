@@ -10,46 +10,46 @@ namespace Rog.Game
     static class GameUtil
     {
         public static readonly Random random = new Random();
-        public static bool occupied((int x, int y) pos, IEnumerable<Character> entities)
+        public static bool Occupied((int x, int y) pos, IEnumerable<Character> entities)
         {
-            return entities.ToList().Exists(e => e.position.x == pos.x && e.position.y == pos.y);
+            return entities.ToList().Exists(e => e.Position.x == pos.x && e.Position.y == pos.y);
         }
-        public static bool outOfBounds((int x, int y) pos, int xSize, int ySize)
+        public static bool OutOfBounds((int x, int y) pos, int xSize, int ySize)
         {
             return 
             pos.x > 0 && pos.x < xSize && 
             pos.y < 0 && pos.y > ySize;
         }
-        public static T pickOne<T>(params T[] items)
+        public static T PickOne<T>(params T[] items)
         {
             int i = random.Next(0, items.Count());
             return items[i];
         }
-        public static Character characterAt(Tuple<int,int> pos, Floor floor)
+        public static Character CharacterAt(Tuple<int,int> pos, Floor floor)
         {
-            return floor.all().First(c => c.position.Item1 == pos.Item1 && c.position.Item2 == pos.Item2);
+            return floor.All().First(c => c.Position.Item1 == pos.Item1 && c.Position.Item2 == pos.Item2);
         }
          
-        public static void doPickup(Character character, Item item, List<Item> items)
+        public static void DoPickup(Character character, Item item, List<Item> items)
         {
-            character.inventory.Add(item);
+            character.Inventory.Add(item);
             items.Remove(item);
         }
-        public static int doAttack(Character attacker, Character attackee, Floor floor)
+        public static int DoAttack(Character attacker, Character attackee, Floor floor)
         {
-            if (attackee.hp > 0)
+            if (attackee.Hp > 0)
             {
-                attackee.hp -= 1;
-                if (attackee.hp <= 0)
+                attackee.Hp -= 1;
+                if (attackee.Hp <= 0)
                 {
-                    floor.characters.Remove(attackee);
-                    floor.dead.Add(attackee);
+                    floor.Characters.Remove(attackee);
+                    floor.Dead.Add(attackee);
                 }
             }
             return 1;
         }
 
-        public static ((int x, int y) newPos, bool moved) move(IEnumerable<Character> wallsAndCharacters, (int x, int y) pos, Command dir, (int width, int height) bounds)
+        public static ((int x, int y) newPos, bool moved) Move(IEnumerable<Character> wallsAndCharacters, (int x, int y) pos, Command dir, (int width, int height) bounds)
         {
             (int x, int y) newPos;
             switch (dir)
@@ -82,7 +82,7 @@ namespace Rog.Game
                     newPos = pos;
                     break;
             }
-            if(!occupied(newPos, wallsAndCharacters) && !outOfBounds(newPos, bounds.Item1, bounds.Item2))
+            if(!Occupied(newPos, wallsAndCharacters) && !OutOfBounds(newPos, bounds.Item1, bounds.Item2))
             {
                 return (newPos, true);
             }

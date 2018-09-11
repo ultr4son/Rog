@@ -12,35 +12,35 @@ namespace Rog.Game
 
         
 
-        public static StateMutation<ProgramState> withItemPickup(Character character, StateMutation<ProgramState> f)
+        public static StateMutation<ProgramState> WithItemPickup(Character character, StateMutation<ProgramState> f)
         {
             return (state) =>
             {
-                Item item = state.game.floor.items.FirstOrDefault(i => i.position.Item1 == character.position.Item1 && i.position.Item2 == character.position.Item2);
+                Item item = state.game.Floor.Items.FirstOrDefault(i => i.Position.x == character.Position.x && i.Position.y == character.Position.y);
                 if (item != null)
                 {
-                    state.log.Add($"{character.name} picked up {item.name}");
-                    GameUtil.doPickup(character, item, state.game.floor.items);
+                    state.log.Add($"{character.Name} picked up {item.Name}");
+                    GameUtil.DoPickup(character, item, state.game.Floor.Items);
                 }
                 return f(state);
             };
         }
-        public static StateMutation<ProgramState> withMoveAndAttack(Character character, Command movement, StateMutation<ProgramState> f)
+        public static StateMutation<ProgramState> WithMoveAndAttack(Character character, Command movement, StateMutation<ProgramState> f)
         {
             return (state) =>
             {
-                Tuple<Tuple<int, int>, bool> newPos = GameUtil.move(state.game.floor.obstacles(), character.position, movement, state.game.floor.size);
-                if (newPos.Item2)
+                ((int x, int y) newPos, bool moved) result = GameUtil.Move(state.game.Floor.Obstacles(), character.Position, movement, state.game.Floor.Size);
+                if (result.moved)
                 {
-                    character.position = newPos.Item1;
+                    character.Position = result.newPos;
                 }
                 else
                 {
-                    Character hit = state.game.floor.obstacles().First(c => c.position.Item1 == newPos.Item1.Item1 && c.position.Item2 == newPos.Item1.Item2);
-                    if (hit.team != Team.NEUTRAL && hit.team != character.team)
+                    Character hit = state.game.Floor.Obstacles().First(c => c.Position.x == result.newPos.x && c.Position.y == result.newPos.y);
+                    if (hit.Team != Team.NEUTRAL && hit.Team != character.Team)
                     {
-                        int damageDone = GameUtil.doAttack(character, hit, state.game.floor);
-                        state.log.Add($"{character.name} hit {hit.name} for {damageDone}");
+                        int damageDone = GameUtil.DoAttack(character, hit, state.game.Floor);
+                        state.log.Add($"{character.Name} hit {hit.Name} for {damageDone}");
 
                     }
                 }

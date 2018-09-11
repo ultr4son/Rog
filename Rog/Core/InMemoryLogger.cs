@@ -9,12 +9,12 @@ namespace Rog.Core
     class InMemoryLogger : ILogger
     {
         private List<string> logs = new List<string>();
-        public IEnumerable<string> getLog()
+        public IEnumerable<string> GetLog()
         {
             return logs;
         }
 
-        public void log(string message)
+        public void Log(string message)
         {
             logs.Add(message);
         }

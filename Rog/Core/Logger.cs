@@ -8,7 +8,7 @@ namespace Rog.Core
 {
     public interface ILogger
     {
-        void log(string message);
-        IEnumerable<string> getLog();
+        void Log(string message);
+        IEnumerable<string> GetLog();
     }
 }

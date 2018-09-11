@@ -22,15 +22,15 @@ namespace Rog
             
             input.OnInput += (object _, Command command) =>
             {
-                game.notify(command);
+                game.Notify(command);
             };
 
             game.OnState += (object _, ProgramState newState) =>
             {
-                ui.notify(newState);
+                ui.Notify(newState);
             };
 
-            input.start();
+            input.Start();
 
         }
     }

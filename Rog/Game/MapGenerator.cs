@@ -20,11 +20,11 @@ namespace Rog.Game
                 {
                     if(x == 0 || y == 0 || x == size.Item1 - 1 || y == size.Item2 - 1)
                     {
-                        walls.Add(Make.wall(10, (x, y)));
+                        walls.Add(Make.Wall(10, (x, y)));
                     }
                 }
             }
-            floor.walls = walls;
+            floor.Walls = walls;
             return floor;
         }
     }

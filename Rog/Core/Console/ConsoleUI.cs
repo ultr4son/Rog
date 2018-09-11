@@ -26,21 +26,21 @@ namespace Rog.Core
                     return "c";
             }   
         }
-        public void notify(ProgramState state)
+        public void Notify(ProgramState state)
         {
             System.Console.Clear();
             StringBuilder b = new StringBuilder();
-            Floor floor = state.game.floor;
-            List<Character> all = floor.obstacles().ToList();
+            Floor floor = state.game.Floor;
+            List<Character> all = floor.Obstacles().ToList();
             System.Console.WriteLine(state.log.FirstOrDefault());
-            for (int y = floor.size.height; y >= 0; y--)
+            for (int y = floor.Size.height; y >= 0; y--)
             {
-                for(int x = 0; x < floor.size.width; x++)
+                for(int x = 0; x < floor.Size.width; x++)
                 {
-                    if(all.Exists(c => c.position.x == x && c.position.y == y))
+                    if(all.Exists(c => c.Position.x == x && c.Position.y == y))
                     {
-                        Character character = all.Find(c => c.position.x == x && c.position.y == y);
-                        b.Append(toChar(character.characterType));
+                        Character character = all.Find(c => c.Position.x == x && c.Position.y == y);
+                        b.Append(toChar(character.CharacterType));
                     }
                     else
                     {

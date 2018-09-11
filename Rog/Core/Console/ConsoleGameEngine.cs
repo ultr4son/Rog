@@ -13,7 +13,7 @@ namespace Rog.Core
         {
         }
         public event EventHandler<Command> OnInput;
-        public void start()
+        public void Start()
         {
             while (true)
             {
@@ -45,7 +45,7 @@ namespace Rog.Core
             }
         }
 
-        public void stop()
+        public void Stop()
         {
             throw new NotImplementedException();
         }

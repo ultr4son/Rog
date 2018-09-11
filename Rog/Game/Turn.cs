@@ -9,18 +9,18 @@ namespace Rog.Game
 {
     public static class Turn
     {
-        public static StateMutation<ProgramState> pass = (state) => state;
+        public static StateMutation<ProgramState> Pass = (state) => state;
 
-        public static CharacterCommandMutation dummy = (character) => (intent) => pass;
+        public static CharacterCommandMutation Dummy = (character) => (intent) => Pass;
 
-        public static CharacterCommandMutation bat = (character) => (intent) =>
+        public static CharacterCommandMutation Bat = (character) => (intent) =>
         {
-            Command move = GameUtil.pickOne(Command.MOVE_DOWN, Command.MOVE_DOWNLEFT, Command.MOVE_DOWNRIGHT, Command.MOVE_LEFT, Command.MOVE_RIGHT, Command.MOVE_UP, Command.MOVE_UPLEFT, Command.MOVE_UPRIGHT);
-            return Behavior.withMoveAndAttack(character, move, pass);
+            Command move = GameUtil.PickOne(Command.MOVE_DOWN, Command.MOVE_DOWNLEFT, Command.MOVE_DOWNRIGHT, Command.MOVE_LEFT, Command.MOVE_RIGHT, Command.MOVE_UP, Command.MOVE_UPLEFT, Command.MOVE_UPRIGHT);
+            return Behavior.WithMoveAndAttack(character, move, Pass);
         };
         public static CharacterCommandMutation player = (player) => (command) =>
-            Behavior.withMoveAndAttack(player, command,
-                Behavior.withItemPickup(player, pass));
+            Behavior.WithMoveAndAttack(player, command,
+                Behavior.WithItemPickup(player, Pass));
 
     }
 }

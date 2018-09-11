@@ -11,21 +11,21 @@ namespace Rog.Core
     {
         public GameState()
         {
-            player = null;
-            floor = new Floor((0, 0));
-            turns = new List<CommandStateMutation>();
+            Player = null;
+            Floor = new Floor((0, 0));
+            Turns = new List<CommandStateMutation>();
         }
-        public Character player
+        public Character Player
         {
             get; set;
         }
 
-        public Floor floor
+        public Floor Floor
         {
             get; set;
         }
 
-        public IEnumerable<CommandStateMutation> turns { get; set; }
+        public IEnumerable<CommandStateMutation> Turns { get; set; }
 
     }    
 }

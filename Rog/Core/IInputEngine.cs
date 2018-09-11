@@ -9,7 +9,7 @@ namespace Rog.Core
     interface IInput
     {
         event EventHandler<Command> OnInput;
-        void start();
-        void stop();
+        void Start();
+        void Stop();
     }
 }

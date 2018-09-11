@@ -10,6 +10,6 @@ namespace Rog.Core
 
     public interface IOutput
     {
-        void notify(ProgramState state);
+        void Notify(ProgramState state);
     }
 }

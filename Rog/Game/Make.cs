@@ -8,67 +8,67 @@ namespace Rog.Game
 {
     public static class Make
     {
-        public static Character character(int hp, string name, CharacterType characterType, Team team, (int,int) position)
+        public static Character Character(int hp, string name, CharacterType characterType, Team team, (int,int) position)
         {
             return new Character()
             {
-                hp = hp,
-                name = name,
-                position = position,
-                characterType = characterType,
-                team = team
+                Hp = hp,
+                Name = name,
+                Position = position,
+                CharacterType = characterType,
+                Team = team
             };
         }
-        public static Character player(int hp, string name, (int,int) position)
+        public static Character Player(int hp, string name, (int,int) position)
         {
             return new Character()
             {
-                hp = hp,
-                name = name,
-                position = position,
-                characterType = CharacterType.PLAYER,
-                primaryArm = Items.hand,
-                team = Team.PLAYER_FRIENDLY
+                Hp = hp,
+                Name = name,
+                Position = position,
+                CharacterType = CharacterType.PLAYER,
+                Primary = Items.hand,
+                Team = Team.PLAYER_FRIENDLY
             };
         }
-        public static Character bat(int hp, (int,int) position)
+        public static Character Bat(int hp, (int,int) position)
         {
             return new Character()
             {
-                hp = hp,
-                name = "bat",
-                characterType = CharacterType.BAT,
-                position = position,
-                team = Team.MONSTER,
-                inventory = new List<Item>(),
-                primaryArm = Items.hand
+                Hp = hp,
+                Name = "bat",
+                CharacterType = CharacterType.BAT,
+                Position = position,
+                Team = Team.MONSTER,
+                Inventory = new List<Item>(),
+                Primary = Items.hand
 
             };
         }
-        public static Character dummy(int hp, (int,int) position)
+        public static Character Dummy(int hp, (int,int) position)
         {
             return new Character()
             {
-                hp = hp,
-                name = "dummy",
-                characterType = CharacterType.DUMMY,
-                position = position,
-                team = Team.MONSTER,
-                inventory = new List<Item>(),
-                primaryArm = Items.hand
+                Hp = hp,
+                Name = "dummy",
+                CharacterType = CharacterType.DUMMY,
+                Position = position,
+                Team = Team.MONSTER,
+                Inventory = new List<Item>(),
+                Primary = Items.hand
 
             };
         }
 
-        public static Character wall(int hp, (int,int) position)
+        public static Character Wall(int hp, (int,int) position)
         {
             return new Character()
             {
-                hp = hp,
-                name = "wall",
-                position = position,
-                team = Team.NEUTRAL,
-                characterType = CharacterType.WALL
+                Hp = hp,
+                Name = "wall",
+                Position = position,
+                Team = Team.NEUTRAL,
+                CharacterType = CharacterType.WALL
             };
         }
     }

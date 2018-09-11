@@ -43,12 +43,12 @@ namespace Rog.Core.Forms
             OnInput(this, command);
         }
 
-        public void start()
+        public void Start()
         {
             mainWindow.KeyDown += MainWindow_KeyDown;
         }
 
-        public void stop()
+        public void Stop()
         {
             mainWindow.KeyDown -= MainWindow_KeyDown;
         }

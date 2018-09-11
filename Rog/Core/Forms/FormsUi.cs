@@ -13,7 +13,7 @@ namespace Rog.Core.Forms
         Log logForm;
         MainWindow mainWindowForm;
 
-        public void notify(ProgramState state)
+        public void Notify(ProgramState state)
         {
             logForm.logText.Text = state.log.Aggregate((s, l) => s += $"{l}\n");
         }

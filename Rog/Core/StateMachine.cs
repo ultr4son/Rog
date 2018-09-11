@@ -17,7 +17,7 @@ namespace Rog.Core
 
         public event EventHandler<TOut> OnState;
 
-        public void notify(TSignal input)
+        public void Notify(TSignal input)
         {
             var result = state(input);
             state = result.next;

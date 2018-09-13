@@ -7,12 +7,18 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    public class ConsoleInputEngine : IInput
+    public class ConsoleInput : IInput
     {
-        public ConsoleInputEngine()
+        public ConsoleInput()
         {
         }
         public event EventHandler<Command> OnInput;
+
+        public string GetRaw()
+        {
+            return Console.ReadLine();
+        }
+
         public void Start()
         {
             while (true)

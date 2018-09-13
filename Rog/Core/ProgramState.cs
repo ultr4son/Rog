@@ -13,10 +13,13 @@ namespace Rog.Core
         public ProgramState(GameState game)
         {
             this.game = game;
-            log = new List<string>();
-        } 
-        
-        public List<string> log { get; private set; }
+            Log = new List<string>();
+            UIState = UIState.NONE;
+            StartScreenModel = new StartScreenModel();
+        }
+        public StartScreenModel StartScreenModel;
+        public UIState UIState { get; set; }
+        public List<string> Log { get; private set; }
         public GameState game { get; private set; } 
     }
 }

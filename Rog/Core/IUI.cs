@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    interface IInput
+    interface IUI : IOutput
     {
-        event EventHandler<Command> OnInput;
-        void Start();
-        void Stop();
+        (int width, int height) GetSize();
     }
 }

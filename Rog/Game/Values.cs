@@ -17,6 +17,7 @@ namespace Rog
         MOVE_DOWNRIGHT,
         MOVE_DOWNLEFT,
         ENTER,
+        INIT,
         NONE       
     }
 
@@ -34,6 +35,13 @@ namespace Rog
         MONSTER,
         NEUTRAL,
         PLAYER_FRIENDLY
+    }
+
+    public enum UIState
+    {
+        MAP,
+        START_SCREEN,
+        NONE
     }
 
    

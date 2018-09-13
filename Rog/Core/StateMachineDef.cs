@@ -12,11 +12,12 @@ namespace Rog.Core
     public delegate StateMachineState<TSignal, TOut> BoundStateMachineState<TSignal, TOut, TBind>(TBind bind);
     public static class States
     {
-        public static BoundStateMachineState<Command, ProgramState, ProgramState> Init = (state) => (command) =>
+        public static BoundStateMachineState<Command, ProgramState, ((int width, int height) size, ProgramState state, IInput input)> Init = (args) => (command) =>
         {
+            ProgramState state = args.state;
 
-            state.game.Floor = MapGenerator.basicFloor((10,10));
-            state.game.Player = Make.Character(10, "Bep", CharacterType.PLAYER, Team.PLAYER_FRIENDLY,(5,5));
+            state.game.Floor = MapGenerator.basicFloor(args.size);
+            state.UIState = UIState.START_SCREEN;
 
             Character dummy = Make.Dummy(10, (4,4));
             Character bat = Make.Bat(10, (2,4));
@@ -29,13 +30,26 @@ namespace Rog.Core
             state.game.Floor.Characters.Add(state.game.Player);
             state.game.Floor.Characters.Add(dummy);
             state.game.Floor.Characters.Add(bat);
-            return (Playing(state), state);
+            return (StartScreen((state, args.input)), state);
         };
-
-        //TODO: Put in state transitions when doing inventory, etc.
-        public static BoundStateMachineState<Command, ProgramState, ProgramState> Playing = (state) => (command) =>
+        public static BoundStateMachineState<Command, ProgramState, (ProgramState state, IInput input)> StartScreen = (args) => (command) =>
         {
-            return (Playing(state), state.game.Turns.Select(f => f(command)).Aggregate(state, (s, f) => f(s)));
+            ProgramState state = args.state;
+            state.UIState = UIState.START_SCREEN;
+            if(state.StartScreenModel.State == StartScreenModelState.INPUT_NAME)
+            {
+                string name = args.input.GetRaw();
+                state.game.Player = Make.Player(10, name, (5, 5));
+                return (Map(state), state);
+            } 
+            return (StartScreen(args), state);
+
+        };
+        
+        //TODO: Put in state transitions when doing inventory, etc.
+        public static BoundStateMachineState<Command, ProgramState, ProgramState> Map = (state) => (command) =>
+        {
+            return (Map(state), state.game.Turns.Select(f => f(command)).Aggregate(state, (s, f) => f(s)));
         };
     }
 }

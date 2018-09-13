@@ -59,58 +59,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Console\ConsoleGameEngine.cs" />
-    <Compile Include="Core\Forms\FormsInput.cs" />
-    <Compile Include="Core\Forms\FormsUI.cs" />
-    <Compile Include="Core\Forms\Inventory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Core\Forms\Inventory.Designer.cs">
-      <DependentUpon>Inventory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Forms\Log.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Core\Forms\Log.Designer.cs">
-      <DependentUpon>Log.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Forms\MainWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Core\Forms\MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Core\IInputEngine.cs" />
+    <Compile Include="Core\ConsoleCore\ConsoleInput.cs" />
+    <Compile Include="Core\Constants.cs" />
+    <Compile Include="Core\IInput.cs" />
     <Compile Include="Core\IMutator.cs" />
     <Compile Include="Core\InMemoryLogger.cs" />
     <Compile Include="Core\Logger.cs" />
-    <Compile Include="Core\SadConsole\SadConsoleUI.cs" />
+    <Compile Include="Core\SadConsoleCore\MapConsole.cs" />
+    <Compile Include="Core\SadConsoleCore\SadConsoleUI.cs" />
+    <Compile Include="Core\StartScreenModel.cs" />
     <Compile Include="Game\Behavior.cs" />
     <Compile Include="Game\Character.cs" />
     <Compile Include="Core\ProgramState.cs" />
-    <Compile Include="Core\Console\ConsoleUI.cs" />
+    <Compile Include="Core\ConsoleCore\ConsoleUI.cs" />
     <Compile Include="Core\GamesState.cs" />
     <Compile Include="Game\Floor.cs" />
     <Compile Include="Core\StateMachine.cs" />
     <Compile Include="Core\StateMachineDef.cs" />
-    <Compile Include="Core\IUserInterface.cs" />
+    <Compile Include="Core\IOutput.cs" />
     <Compile Include="Game\Item.cs" />
     <Compile Include="Game\Make.cs" />
     <Compile Include="Game\MapGenerator.cs" />
     <Compile Include="Game\Turn.cs" />
+    <Compile Include="Core\IUI.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Game\GameUtil.cs" />
     <Compile Include="Game\Values.cs" />
-    <EmbeddedResource Include="Core\Forms\Inventory.resx">
-      <DependentUpon>Inventory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Forms\Log.resx">
-      <DependentUpon>Log.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Forms\MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

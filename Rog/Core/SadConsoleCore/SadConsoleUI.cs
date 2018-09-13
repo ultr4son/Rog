@@ -11,16 +11,20 @@ namespace Rog.Core.SadConsoleRog
 {
     class SadConsoleUI : IOutput
     {
+        public SadConsoleUI()
+        {
+            SadConsole.Game.Create("Fonts/IBM.font", 80, 25);
+            SadConsole.Game.OnInitialize = Init;
+        }
 
         public void Notify(ProgramState state)
         {
-            SadConsole.Game.Create("Fonts/IBM.font", 80, 25);
-            SadConsole.Game.OnInitialize = 
         }
 
         public static void Init()
         {
-            c
+            MapConsole map = new MapConsole();
+
         }
     }
 }

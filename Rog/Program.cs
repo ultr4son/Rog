@@ -15,9 +15,9 @@ namespace Rog
         static void Main()
         {
             ProgramState state = new ProgramState(new GameState());
-            IOutput ui = new ConsoleUI();
-            IInput input = new ConsoleInputEngine();
-            IMutator<Command, ProgramState> game = new StateMachine<Command, ProgramState>(States.Init(state));
+            IUI ui = new ConsoleUI();
+            IInput input = new ConsoleInput();
+            IMutator<Command, ProgramState> game = new StateMachine<Command, ProgramState>(States.Init((ui.GetSize(), state, input)));
 
             
             input.OnInput += (object _, Command command) =>
@@ -30,6 +30,7 @@ namespace Rog
                 ui.Notify(newState);
             };
 
+            game.Notify(Command.INIT);
             input.Start();
 
         }

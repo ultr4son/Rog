@@ -10,7 +10,7 @@ namespace Rog.Core
     public class ConsoleUI : IUI
     {
         
-        private string toChar(CharacterType type)
+        private string ToChar(CharacterType type)
         {
             switch (type)
             {
@@ -40,19 +40,16 @@ namespace Rog.Core
         }
         private void DrawStart(ProgramState state)
         {
-            switch(state.StartScreenModel.State)
-            {
-                case StartScreenModelState.INPUT_NAME:
-                    Console.WriteLine("Input your name.");
-                    break;
-            }
+            PromptValue pv = state.StartScreen.Peek();
+            Console.WriteLine(pv.Prompt);
+            Console.WriteLine(pv.Getter(state));
         }
-        private void DrawMap(ProgramState state)
+        private void DrawMap(ProgramState state) 
         {
             StringBuilder b = new StringBuilder();
-            Floor floor = state.game.Floor;
+            Floor floor = state.Game.Floor;
             List<Character> all = floor.Obstacles().ToList();
-            System.Console.WriteLine(state.Log.FirstOrDefault());
+            System.Console.WriteLine(state.Log.LastOrDefault());
             for (int y = floor.Size.height; y >= 0; y--)
             {
                 for (int x = 0; x < floor.Size.width; x++)
@@ -60,7 +57,7 @@ namespace Rog.Core
                     if (all.Exists(c => c.Position.x == x && c.Position.y == y))
                     {
                         Character character = all.Find(c => c.Position.x == x && c.Position.y == y);
-                        b.Append(toChar(character.CharacterType));
+                        b.Append(ToChar(character.CharacterType));
                     }
                     else
                     {
@@ -73,13 +70,18 @@ namespace Rog.Core
         }
         public void Notify(ProgramState state)
         {
+            System.Console.Clear();
             Draw(state);
         }
 
         public (int width, int height) GetSize()
         {
-            System.Console.Clear();
             return (Console.WindowWidth, Console.WindowHeight);
+        }
+
+        public void Print(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }

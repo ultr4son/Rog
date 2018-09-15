@@ -12,12 +12,8 @@ namespace Rog.Core
         public ConsoleInput()
         {
         }
-        public event EventHandler<Command> OnInput;
+        public event EventHandler<CommandValue> OnInput;
 
-        public string GetRaw()
-        {
-            return Console.ReadLine();
-        }
 
         public void Start()
         {
@@ -43,10 +39,22 @@ namespace Rog.Core
                     case ConsoleKey.NumPad7:
                         command = Command.MOVE_LEFT;
                         break;
+                    case ConsoleKey.Enter:
+                        command = Command.ENTER;
+                        break;
+                    case ConsoleKey.Backspace:
+                        command = Command.BACKSPACE;
+                        break;
                     default:
-                        continue;
+                        command = Command.NONE;
+                        break;
                 }
-                OnInput(this, command);
+                CommandValue commandValue = new CommandValue()
+                {
+                    Command = command,
+                    Raw = key.KeyChar.ToString()
+                };
+                OnInput(this, commandValue);
                 
             }
         }

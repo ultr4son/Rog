@@ -5,8 +5,6 @@ C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\bin\Debug\Rog.exe
 C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\bin\Debug\Rog.pdb
 C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.exe
 C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.pdb
-C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.Core.Forms.Inventory.resources
-C:\Users\Tristan\documents\visual studio 2015\Projects\Rog\Rog\obj\Debug\Rog.Core.Forms.Log.resources
 C:\Users\Tristan Thompson\source\repos\Rog\Rog\obj\Debug\Rog.csprojResolveAssemblyReference.cache
 C:\Users\Tristan Thompson\source\repos\Rog\Rog\obj\Debug\Rog.Core.Forms.Inventory.resources
 C:\Users\Tristan Thompson\source\repos\Rog\Rog\obj\Debug\Rog.Core.Forms.Log.resources
@@ -19,7 +17,6 @@ C:\Users\Tristan Thompson\source\repos\Rog\Rog\obj\Debug\Rog.pdb
 C:\Users\Tristan Thompson\source\repos\Rog\Rog\bin\Debug\Rog.exe.config
 C:\Users\Tristan Thompson\source\repos\Rog\Rog\bin\Debug\Rog.exe
 C:\Users\Tristan Thompson\source\repos\Rog\Rog\bin\Debug\Rog.pdb
-C:\Users\Tristan\Documents\Visual Studio 2015\Projects\Rog\Rog\obj\Debug\Rog.Core.Console.MainWindow.resources
 C:\Users\Tristan\Documents\Visual Studio 2015\Projects\Rog\Rog\obj\Debug\Rog.csproj.CoreCompileInputs.cache
 C:\Users\Tristan\Documents\Visual Studio 2015\Projects\Rog\Rog\bin\Debug\Cheepicus_12x12.png
 C:\Users\Tristan\Documents\Visual Studio 2015\Projects\Rog\Rog\bin\Debug\IBM8x16.png
@@ -72,3 +69,4 @@ C:\Users\tristan.thompson\Documents\Visual Studio 2017\Projects\Rog\Rog\obj\Debu
 C:\Users\tristan.thompson\Documents\Visual Studio 2017\Projects\Rog\Rog\obj\Debug\Rog.csproj.CopyComplete
 C:\Users\tristan.thompson\Documents\Visual Studio 2017\Projects\Rog\Rog\obj\Debug\Rog.exe
 C:\Users\tristan.thompson\Documents\Visual Studio 2017\Projects\Rog\Rog\obj\Debug\Rog.pdb
+C:\Users\Tristan\Documents\Visual Studio 2015\Projects\Rog\Rog\obj\Debug\Rog.csprojAssemblyReference.cache

@@ -17,10 +17,10 @@ namespace Rog
             ProgramState state = new ProgramState(new GameState());
             IUI ui = new ConsoleUI();
             IInput input = new ConsoleInput();
-            IMutator<Command, ProgramState> game = new StateMachine<Command, ProgramState>(States.Init((ui.GetSize(), state, input)));
+            IMutator<CommandValue, ProgramState> game = new StateMachine<CommandValue, ProgramState>(States.Init(state, (10,10)));
 
             
-            input.OnInput += (object _, Command command) =>
+            input.OnInput += (object _, CommandValue command) =>
             {
                 game.Notify(command);
             };
@@ -30,7 +30,7 @@ namespace Rog
                 ui.Notify(newState);
             };
 
-            game.Notify(Command.INIT);
+            game.Notify(new CommandValue() { Command = Command.INIT, Raw = "" });
             input.Start();
 
         }

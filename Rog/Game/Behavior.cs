@@ -16,11 +16,11 @@ namespace Rog.Game
         {
             return (state) =>
             {
-                Item item = state.game.Floor.Items.FirstOrDefault(i => i.Position.x == character.Position.x && i.Position.y == character.Position.y);
+                Item item = state.Game.Floor.Items.FirstOrDefault(i => i.Position.x == character.Position.x && i.Position.y == character.Position.y);
                 if (item != null)
                 {
                     state.Log.Add($"{character.Name} picked up {item.Name}");
-                    GameUtil.DoPickup(character, item, state.game.Floor.Items);
+                    GameUtil.DoPickup(character, item, state.Game.Floor.Items);
                 }
                 return f(state);
             };
@@ -29,17 +29,17 @@ namespace Rog.Game
         {
             return (state) =>
             {
-                ((int x, int y) newPos, bool moved) result = GameUtil.Move(state.game.Floor.Obstacles(), character.Position, movement, state.game.Floor.Size);
+                ((int x, int y) newPos, bool moved) result = GameUtil.Move(state.Game.Floor.Obstacles(), character.Position, movement, state.Game.Floor.Size);
                 if (result.moved)
                 {
                     character.Position = result.newPos;
                 }
                 else
                 {
-                    Character hit = state.game.Floor.Obstacles().First(c => c.Position.x == result.newPos.x && c.Position.y == result.newPos.y);
+                    Character hit = state.Game.Floor.Obstacles().First(c => c.Position.x == result.newPos.x && c.Position.y == result.newPos.y);
                     if (hit.Team != Team.NEUTRAL && hit.Team != character.Team)
                     {
-                        int damageDone = GameUtil.DoAttack(character, hit, state.game.Floor);
+                        int damageDone = GameUtil.DoAttack(character, hit, state.Game.Floor);
                         state.Log.Add($"{character.Name} hit {hit.Name} for {damageDone}");
 
                     }

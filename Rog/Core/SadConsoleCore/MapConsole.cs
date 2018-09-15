@@ -35,9 +35,9 @@ namespace Rog.Core
         public override void Update(TimeSpan delta)
         {
 
-            for(int x = 0; x < programState.game.Floor.Size.width; x++)
+            for(int x = 0; x < programState.Game.Floor.Size.width; x++)
             {
-                for(int y = 0; y < programState.game.Floor.Size.height; y++)
+                for(int y = 0; y < programState.Game.Floor.Size.height; y++)
                 {
                     
 

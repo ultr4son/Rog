@@ -12,14 +12,14 @@ namespace Rog.Core
     {
         public ProgramState(GameState game)
         {
-            this.game = game;
+            Game = game;
             Log = new List<string>();
             UIState = UIState.NONE;
-            StartScreenModel = new StartScreenModel();
+            StartScreen = new Stack<PromptValue>();
         }
-        public StartScreenModel StartScreenModel;
+        public Stack<PromptValue> StartScreen;
         public UIState UIState { get; set; }
         public List<string> Log { get; private set; }
-        public GameState game { get; private set; } 
+        public GameState Game { get; private set; } 
     }
 }

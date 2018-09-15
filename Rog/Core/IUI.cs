@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rog.Core
 {
-    interface IUI : IOutput
+    public interface IUI : IOutput
     {
         (int width, int height) GetSize();
+        void Print(string message);
     }
 }

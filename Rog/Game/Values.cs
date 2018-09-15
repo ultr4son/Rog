@@ -17,8 +17,14 @@ namespace Rog
         MOVE_DOWNRIGHT,
         MOVE_DOWNLEFT,
         ENTER,
+        BACKSPACE,
         INIT,
         NONE       
+    }
+    public class CommandValue
+    {
+        public Command Command;
+        public string Raw;
     }
 
     public enum CharacterType
@@ -39,8 +45,8 @@ namespace Rog
 
     public enum UIState
     {
-        MAP,
         START_SCREEN,
+        MAP,
         NONE
     }
 

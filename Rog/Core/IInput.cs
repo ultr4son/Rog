@@ -8,9 +8,9 @@ namespace Rog.Core
 {
     public interface IInput
     {
-        event EventHandler<Command> OnInput;
-        string GetRaw();
+        event EventHandler<CommandValue> OnInput;
         void Start();
         void Stop();
+
     }
 }
